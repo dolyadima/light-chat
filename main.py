@@ -55,14 +55,16 @@ def index():
 @app.route('/list_messages', methods=['GET'])
 def list_messages():
     with open(f'./list_messages.txt', 'r') as fr:
+        lines: list = fr.readlines()
+        lines = lines[-50:] if len(lines) > 50 else lines
         result: dict = {
-            'list_messages': '\n'.join([s.strip() for s in fr.readlines()])
+            'list_messages': '\n'.join([s.strip() for s in lines])
         }
     return json.dumps(result, indent=4)
 
 
 @app.route('/new_message', methods=['POST'])
-def get_message():
+def new_message():
     data: dict = request.json
     if data.get('message', ''):
         with open(f'./list_messages.txt', 'a') as fw:
