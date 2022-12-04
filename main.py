@@ -31,11 +31,21 @@ def index():
 <body>
     <div class="content">
         <img src="/static/img/trident_ua.png"> <br />
-        <label for="list_messages">List messages:</label> <br />
-        <textarea id="id_list_messages" name="list_messages" rows="20" cols="44"></textarea> <br />
-        <label for="input_message">Message:</label>
-        <input type="text" name="text_message" id="id_text_message">
-        <input type="button" id="id_btn_send" value="Send" onclick="send_message()">
+        
+        <div class="nickname" id="nickname_div">
+            <label for="id_nickname">Nickname:</label>
+            <input type="text" id="id_nickname">
+            <input type="button" id="id_btn_nickname" onclick="set_nickname()" value=" Apply ">
+            <input type="hidden" id="nickname_hidden" value="">
+        </div>
+        
+        <div class="chat" id="chat_div">
+            <label for="id_list_messages">List messages:</label> <br />
+            <textarea id="id_list_messages" rows="20" cols="44"></textarea> <br />
+            <label for="id_text_message">Message:</label>
+            <input type="text" id="id_text_message">
+            <input type="button" id="id_btn_send" onclick="send_message()" value=" Send ">
+        </div>
     </div>
 </body>
 </html>
@@ -56,7 +66,7 @@ def get_message():
     data: dict = request.json
     if data.get('message', ''):
         with open(f'./list_messages.txt', 'a') as fw:
-            fw.write(f'{datetime.datetime.now().strftime("%H:%M:%S")}: {data["message"]}\n')
+            fw.write(f'{datetime.datetime.now().strftime("%H:%M:%S")} {data["message"]}\n')
         return '{ "status": "200 OK" }'
     else:
         return '{ "status": "ERROR" }'

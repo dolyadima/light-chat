@@ -14,11 +14,12 @@ function get_list_messages() {
 
 function send_message() {
     const txt_msg_input = $("input#id_text_message");
+    const nickname = $('input#nickname_hidden').val();
     $.ajax({
         type: "POST",
         url: "/new_message",
         data: JSON.stringify({
-          'message': txt_msg_input.val()
+          'message': nickname + ": " + txt_msg_input.val()
         }),
         contentType: "application/json",
         success: function(){
@@ -27,7 +28,19 @@ function send_message() {
     });
 }
 
+function set_nickname() {
+    const nickname_input = $('input#id_nickname');
+    const nickname = nickname_input.val();
+    if(nickname !== "") {
+        $('input#nickname_hidden').val(nickname);
+        nickname_input.val("");
+        $('#nickname_div').hide();
+        $('#chat_div').show();
+    }
+}
+
 $(document).ready(function() {
+    $('#chat_div').hide();
     setInterval(get_list_messages, 1000);
     setInterval(function() {
         const textarea = $('textarea#id_list_messages');
