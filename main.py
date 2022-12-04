@@ -1,3 +1,4 @@
+import datetime
 import json
 from flask import Flask, request
 
@@ -55,7 +56,7 @@ def get_message():
     data: dict = request.json
     if data.get('message', ''):
         with open(f'./list_messages.txt', 'a') as fw:
-            fw.write(f'{data["message"]}\n')
+            fw.write(f'{datetime.datetime.now().strftime("%H:%M:%S")}: {data["message"]}\n')
         return '{ "status": "200 OK" }'
     else:
         return '{ "status": "ERROR" }'
