@@ -46,6 +46,11 @@ $(document).ready(function() {
             $('#id_btn_send').click();
         }
     });
+    $('input#id_nickname').on('keyup', function(e) {
+        if (e.keyCode === 13) {
+            $('#id_btn_nickname').click();
+        }
+    });
     setInterval(get_list_messages, 1000);
     setInterval(function() {
         const textarea = $('textarea#id_list_messages');
