@@ -18,11 +18,17 @@ def index():
     <title>Glory to Ukraine</title>
     <link rel="icon" type="image/x-icon" href="/static/img/ukraine.ico">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+
+    <!-- fonts google com -->    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
     <script type="text/javascript" src="/static/js/jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="/static/js/main.js"></script>
 </head>
 <body>
-    <div class="main">
+    <div class="content">
         <img src="/static/img/trident_ua.png"> <br />
         <label for="list_messages">List messages:</label> <br />
         <textarea id="id_list_messages" name="list_messages" rows="10" cols="44"></textarea> <br />
