@@ -29,4 +29,8 @@ function send_message() {
 
 $(document).ready(function() {
     setInterval(get_list_messages, 1000);
+    setInterval(function() {
+        const textarea = $('textarea#id_list_messages');
+        textarea.scrollTop(textarea[0].scrollHeight);
+        }, 1000);
 });
