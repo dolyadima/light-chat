@@ -31,7 +31,7 @@ def index():
     <div class="content">
         <img src="/static/img/trident_ua.png"> <br />
         <label for="list_messages">List messages:</label> <br />
-        <textarea id="id_list_messages" name="list_messages" rows="10" cols="44"></textarea> <br />
+        <textarea id="id_list_messages" name="list_messages" rows="20" cols="44"></textarea> <br />
         <label for="input_message">Message:</label>
         <input type="text" name="text_message" id="id_text_message">
         <input type="button" id="id_btn_send" value="Send" onclick="send_message()">
